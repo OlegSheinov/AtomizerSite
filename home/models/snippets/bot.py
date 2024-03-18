@@ -29,9 +29,5 @@ class TgBotSnippet(BaseSnippet):
         verbose_name = _('Bot settings')
         verbose_name_plural = _("Bot settings")
 
-    @property
-    def terms_of_use(self):
-        return self.terms_of_use_link.link
-
     def __str__(self):
         return self.title

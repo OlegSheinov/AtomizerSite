@@ -16,7 +16,6 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -25,6 +24,9 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "home",
+    'wagtail_modeltranslation',
+    'wagtail_modeltranslation.makemigrations',
+    'wagtail_modeltranslation.migrate',
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
+    'wagtail.locales',
     "wagtail",
     "modelcluster",
     "taggit",
@@ -44,11 +47,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -74,6 +79,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -103,7 +109,6 @@ REST_FRAMEWORK = {
     )
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -122,20 +127,37 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'en'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
+
+WAGTAIL_I18N_ENABLED = True
 
 USE_L10N = True
 
 USE_TZ = True
 
+WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),
+]
+
+ALLOWED_LANGUAGES = ("en", "ru")
+
+MODELTRANSLATION_LANGUAGES = ALLOWED_LANGUAGES
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = LANGUAGE_CODE
+
+MODELTRANSLATION_FALLBACK_LANGUAGES = {
+    'default': (LANGUAGE_CODE,),
+}
+
+WAGTAILMODELTRANSLATION_TRANSLATE_SLUGS = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -160,7 +182,6 @@ STATIC_URL = "/static/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "atomizer"
@@ -176,3 +197,31 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
+
+WAGTAILIMAGES_EXTENSIONS = ["gif", "jpg", "jpeg", "png", "webp", "svg"]
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtail.admin.rich_text.DraftailRichTextArea',
+        'OPTIONS': {
+            'features': ['bold', 'italic', 'ul', 'link']
+        }
+    },
+    'secondary': {
+        'WIDGET': 'some.external.RichTextEditor',
+        # here you can specify another widget and set it via RichTextField(editor='secondary')
+    },
+    'full': {
+        'WIDGET': 'wagtail.admin.rich_text.DraftailRichTextArea',
+        'OPTIONS': {
+            'features': ["h1", "h2", "h3", "h4", "h5", "h6", "italic", "bold", "ol", "ul", "hr", "link",
+                         "document-link", "image", "embed", "code", "superscript", "subscript", "strikethrough",
+                         "blockquote"]
+        }
+    }
+}
+
+# Graphene
+
+GRAPHENE = {
+    'SCHEMA': 'home.api.schema',
+}

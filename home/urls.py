@@ -1,8 +1,9 @@
 from django.urls import path
-
-from home.api.views import GetBotSettingsAPI
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
 
 app_name = 'api'
 urlpatterns = [
-    path("bot_setting/", GetBotSettingsAPI.as_view(), name='settings'),
+    path('graphql/', csrf_exempt(GraphQLView.as_view())),
+    path('graphiql/', csrf_exempt(GraphQLView.as_view(graphiql=True, pretty=True))),
 ]

@@ -10,10 +10,12 @@ class Tariffs(models.Model):
                             verbose_name=_("Tariff Name"))
     description = RichTextField(blank=True, null=True, verbose_name=_("Tariff description"))
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, verbose_name=_("Tariff price"))
-    currency = models.CharField(
+    currency = models.IntegerField(
             verbose_name=_("Purpose of the request"),
-            choices=CurrencyChoices.choices,
-            max_length=16
+            choices=CurrencyChoices.choices
         )
-    uses = models.IntegerField(verbose_name=_("Uses in the tariff"), default=0)
+    uses = models.PositiveIntegerField(verbose_name=_("Uses in the tariff"), default=0)
     end_date = models.DateField(verbose_name=_("End Date"), blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.name}"
