@@ -60,6 +60,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    "home.middleware.LanguageMiddleware",
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

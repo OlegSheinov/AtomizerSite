@@ -13,6 +13,7 @@ class User(AbstractUser):
     )
     total_uses = models.PositiveIntegerField(default=0, verbose_name=_("Total uses"))
     uses_left = models.PositiveIntegerField(default=0, verbose_name=_("Uses left"))
+    lang = models.CharField(max_length=4, default='en')
 
     class Meta:
         verbose_name = _('user')
