@@ -6,7 +6,7 @@ from home.choices.currency import CurrencyChoices
 
 
 class Tariffs(models.Model):
-    name = models.CharField(max_length=64, blank=True, null=True, unique=True, default=_("Tariff 1"),
+    name = models.CharField(max_length=64, blank=True, null=True, unique=True, default="Tariff 1",
                             verbose_name=_("Tariff Name"))
     description = RichTextField(blank=True, null=True, verbose_name=_("Tariff description"))
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, verbose_name=_("Tariff price"))

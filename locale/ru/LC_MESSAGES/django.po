@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-20 18:57+0300\n"
+"POT-Creation-Date: 2024-03-20 21:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,44 +50,56 @@ msgid "Welcome message on tg bot"
 msgstr "Вступительное сообщение бота"
 
 #: home/models/snippets/bot.py:12
+msgid "Language choice text"
+msgstr "Текст при выборе языка"
+
+#: home/models/snippets/bot.py:13
+msgid "Tariff choice text"
+msgstr "Текст при выборе тарифа"
+
+#: home/models/snippets/bot.py:14
 msgid "Terms of use text"
 msgstr "Текст, отсылаемый с условиями бота"
 
-#: home/models/snippets/bot.py:13
+#: home/models/snippets/bot.py:15
 msgid "The link in the bot will be located under the texts"
 msgstr "Ссылка в боте будет располагаться под текстами"
 
-#: home/models/snippets/bot.py:19
+#: home/models/snippets/bot.py:21
 msgid "Terms of use link"
 msgstr "Ссылка на условия пользования ботом"
 
-#: home/models/snippets/bot.py:21
+#: home/models/snippets/bot.py:23
 msgid "Main menu text"
 msgstr "Текст главного меню"
 
-#: home/models/snippets/bot.py:22
+#: home/models/snippets/bot.py:24
 msgid "Web app button text"
 msgstr "Текст кнопки веб приложения"
 
-#: home/models/snippets/bot.py:23
+#: home/models/snippets/bot.py:25
 msgid "Settings button text"
 msgstr "Текст кнопки настроек"
 
-#: home/models/snippets/bot.py:24
+#: home/models/snippets/bot.py:26
 msgid "Tariffs button text"
 msgstr "Текст кнопки тарифов"
 
-#: home/models/snippets/bot.py:25
+#: home/models/snippets/bot.py:27
 msgid "Donate button text"
 msgstr "Текст кнопки доната"
 
-#: home/models/snippets/bot.py:40 home/models/snippets/bot.py:41
+#: home/models/snippets/bot.py:28
+msgid "Home button text"
+msgstr "Текст кнопки домой"
+
+#: home/models/snippets/bot.py:29
+msgid "Back button text"
+msgstr "Текст кнопки назад"
+
+#: home/models/snippets/bot.py:48 home/models/snippets/bot.py:49
 msgid "Bot settings"
 msgstr "Настройки бота"
-
-#: home/models/snippets/tariff.py:9
-msgid "Tariff 1"
-msgstr "Тариф 1"
 
 #: home/models/snippets/tariff.py:10
 msgid "Tariff Name"

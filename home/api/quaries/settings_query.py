@@ -11,16 +11,7 @@ class SettingsNode(DjangoObjectType):
 
     class Meta:
         model = TgBotSnippet
-        only_fields = [
-            "title",
-            "welcome_message",
-            "main_menu_text",
-            "terms_of_use_text",
-            "web_app_btn_text",
-            "settings_btn_text",
-            "tariffs_btn_text",
-            "donate_btn_text",
-        ]
+        only_fields = "__all__"
 
     def resolve_terms_of_use_link(self: TgBotSnippet, info):
         return self.terms_of_use_link.full_url
@@ -33,6 +24,12 @@ class SettingsNode(DjangoObjectType):
 
     def resolve_terms_of_use_text(self: TgBotSnippet, info):
         return to_html(richtext(self.terms_of_use_text))
+
+    def resolve_language_choice_text(self: TgBotSnippet, info):
+        return to_html(richtext(self.language_choice_text))
+
+    def resolve_tariff_choice_text(self: TgBotSnippet, info):
+        return to_html(richtext(self.tariff_choice_text))
 
 
 class SettingsQuery:
