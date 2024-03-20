@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-20 18:57+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: home/api/quaries/user_query.py:21
+msgid "Nothing"
+msgstr ""
+
+#: home/choices/currency.py:6
+msgid "Ruble ₽"
+msgstr ""
+
+#: home/choices/currency.py:7
+msgid "Euro €"
+msgstr ""
+
+#: home/choices/currency.py:8
+msgid "Dollar $"
+msgstr ""
+
+#: home/models/snippets/base.py:17
+msgid ""
+"Может быть только {max_instances} экземпляр(ов) сниппета {self.__str__()}."
+msgstr ""
+
+#: home/models/snippets/bot.py:10
+msgid "Bot name"
+msgstr ""
+
+#: home/models/snippets/bot.py:11
+msgid "Welcome message on tg bot"
+msgstr ""
+
+#: home/models/snippets/bot.py:12
+msgid "Terms of use text"
+msgstr ""
+
+#: home/models/snippets/bot.py:13
+msgid "The link in the bot will be located under the texts"
+msgstr ""
+
+#: home/models/snippets/bot.py:19
+msgid "Terms of use link"
+msgstr ""
+
+#: home/models/snippets/bot.py:21
+msgid "Main menu text"
+msgstr ""
+
+#: home/models/snippets/bot.py:22
+msgid "Web app button text"
+msgstr ""
+
+#: home/models/snippets/bot.py:23
+msgid "Settings button text"
+msgstr ""
+
+#: home/models/snippets/bot.py:24
+msgid "Tariffs button text"
+msgstr ""
+
+#: home/models/snippets/bot.py:25
+msgid "Donate button text"
+msgstr ""
+
+#: home/models/snippets/bot.py:40 home/models/snippets/bot.py:41
+msgid "Bot settings"
+msgstr ""
+
+#: home/models/snippets/tariff.py:9
+msgid "Tariff 1"
+msgstr ""
+
+#: home/models/snippets/tariff.py:10
+msgid "Tariff Name"
+msgstr ""
+
+#: home/models/snippets/tariff.py:11
+msgid "Tariff description"
+msgstr ""
+
+#: home/models/snippets/tariff.py:12
+msgid "Tariff price"
+msgstr ""
+
+#: home/models/snippets/tariff.py:14
+msgid "Currency tariff"
+msgstr ""
+
+#: home/models/snippets/tariff.py:17
+msgid "Uses in the tariff"
+msgstr ""
+
+#: home/models/snippets/tariff.py:18
+msgid "End Date"
+msgstr ""
+
+#: home/models/user.py:7
+msgid "Telegram ID"
+msgstr ""
+
+#: home/models/user.py:8
+msgid "Telegram Username"
+msgstr ""
+
+#: home/models/user.py:9
+msgid "Telegram first name"
+msgstr ""
+
+#: home/models/user.py:10
+msgid "Telegram last name"
+msgstr ""
+
+#: home/models/user.py:12
+msgid "Tariff"
+msgstr ""
+
+#: home/models/user.py:14
+msgid "Total uses"
+msgstr ""
+
+#: home/models/user.py:15
+msgid "Uses left"
+msgstr ""
+
+#: home/models/user.py:19
+msgid "user"
+msgstr ""
+
+#: home/models/user.py:20
+msgid "Users"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:6
+msgid "Visit the Wagtail website"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:15
+msgid "View the release notes"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:27
+msgid "Welcome to your new Wagtail site!"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:28
+msgid ""
+"Please feel free to <a href=\"https://github.com/wagtail/wagtail/wiki/"
+"Slack\">join our community on Slack</a>, or get started with one of the "
+"links below."
+msgstr ""
+
+#: home/templates/home/welcome_page.html:35
+msgid "Wagtail Documentation"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:36
+msgid "Topics, references, & how-tos"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:42
+msgid "Tutorial"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:43
+msgid "Build your first Wagtail site"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:49
+msgid "Admin Interface"
+msgstr ""
+
+#: home/templates/home/welcome_page.html:50
+msgid "Create your superuser first!"
+msgstr ""
+
+#: home/utils/formatted_date.py:8
+msgid "час"
+msgstr "hour"
+
+#: home/utils/formatted_date.py:8
+msgid "часа"
+msgstr "hours"
+
+#: home/utils/formatted_date.py:8
+msgid "часов"
+msgstr "hours"
+
+#: home/utils/formatted_date.py:9
+msgid "день"
+msgstr "day"
+
+#: home/utils/formatted_date.py:9
+msgid "дня"
+msgstr "days"
+
+#: home/utils/formatted_date.py:9
+msgid "дней"
+msgstr "days"
+
+#: home/utils/formatted_date.py:19
+msgid "Меньше часа"
+msgstr "Less than an hour"

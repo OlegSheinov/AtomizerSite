@@ -19,6 +19,10 @@ class TgBotSnippet(BaseSnippet):
         verbose_name=_("Terms of use link")
     )
     main_menu_text = RichTextField(blank=False, null=True, verbose_name=_("Main menu text"))
+    web_app_btn_text = models.CharField(max_length=32, blank=False, null=True, verbose_name=_("Web app button text"))
+    settings_btn_text = models.CharField(max_length=32, blank=False, null=True, verbose_name=_("Settings button text"))
+    tariffs_btn_text = models.CharField(max_length=32, blank=False, null=True, verbose_name=_("Tariffs button text"))
+    donate_btn_text = models.CharField(max_length=32, blank=False, null=True, verbose_name=_("Donate button text"))
 
     panels = [
         FieldPanel("title"),
@@ -26,6 +30,10 @@ class TgBotSnippet(BaseSnippet):
         FieldPanel("terms_of_use_text"),
         FieldPanel("terms_of_use_link"),
         FieldPanel("main_menu_text"),
+        FieldPanel("web_app_btn_text"),
+        FieldPanel("settings_btn_text"),
+        FieldPanel("tariffs_btn_text"),
+        FieldPanel("donate_btn_text"),
     ]
 
     class Meta:

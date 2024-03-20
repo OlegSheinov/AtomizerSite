@@ -11,7 +11,16 @@ class SettingsNode(DjangoObjectType):
 
     class Meta:
         model = TgBotSnippet
-        only_fields = ["title", "welcome_message", "main_menu_text", "terms_of_use_text"]
+        only_fields = [
+            "title",
+            "welcome_message",
+            "main_menu_text",
+            "terms_of_use_text",
+            "web_app_btn_text",
+            "settings_btn_text",
+            "tariffs_btn_text",
+            "donate_btn_text",
+        ]
 
     def resolve_terms_of_use_link(self: TgBotSnippet, info):
         return self.terms_of_use_link.full_url
@@ -27,9 +36,9 @@ class SettingsNode(DjangoObjectType):
 
 
 class SettingsQuery:
-    get_settings = graphene.Field(SettingsNode)
+    get_messages = graphene.Field(SettingsNode)
 
-    def resolve_get_settings(self, info, **kwargs):
+    def resolve_get_messages(self, info, **kwargs):
         queryset = TgBotSnippet.objects.first()
         try:
             return queryset

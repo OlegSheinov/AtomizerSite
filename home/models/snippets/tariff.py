@@ -11,7 +11,7 @@ class Tariffs(models.Model):
     description = RichTextField(blank=True, null=True, verbose_name=_("Tariff description"))
     price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, verbose_name=_("Tariff price"))
     currency = models.IntegerField(
-            verbose_name=_("Purpose of the request"),
+            verbose_name=_("Currency tariff"),
             choices=CurrencyChoices.choices
         )
     uses = models.PositiveIntegerField(verbose_name=_("Uses in the tariff"), default=0)

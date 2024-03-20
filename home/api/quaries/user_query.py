@@ -1,14 +1,31 @@
+from datetime import datetime, timezone
+
 import graphene
+from django.utils.translation import gettext_lazy as _
 from graphene_django import DjangoObjectType
 
 from home.models import User
+from home.utils.formatted_date import format_time
 
 
 class UserNode(DjangoObjectType):
+    tariff = graphene.String()
+    time_with_us = graphene.String()
+
     class Meta:
         model = User
-        only_fields = ['tg_id', 'tg_username', 'tg_first_name', 'tg_last_name', 'tariff', 'total_uses',
-                       'uses_left']
+        only_fields = ['tg_id', 'tg_username', 'tg_first_name', 'tg_last_name', 'total_uses',
+                       'uses_left', 'date_joined']
+
+    def resolve_tariff(self: User, info):
+        return self.tariff.name if self.tariff else _("Nothing")
+
+    def resolve_time_with_us(self: User, info):
+        current_date = datetime.now(timezone.utc)
+        date_joined = self.date_joined
+        time_with_us = current_date - date_joined
+        text = format_time(time_with_us.seconds)
+        return text
 
 
 class CreateUserMutation(graphene.Mutation):
