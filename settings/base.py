@@ -23,7 +23,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "home",
     'wagtail_modeltranslation',
     'wagtail_modeltranslation.makemigrations',
     'wagtail_modeltranslation.migrate',
@@ -47,7 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'graphene_django'
+    'graphene_django',
+    "home",
 ]
 
 MIDDLEWARE = [
@@ -227,3 +227,9 @@ WAGTAILADMIN_RICH_TEXT_EDITORS = {
 GRAPHENE = {
     'SCHEMA': 'home.api.schema',
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "http://localhost:8000",
+    "https://51f8-79-140-150-106.ngrok-free.app",
+]
