@@ -19,6 +19,7 @@ class TgBotSnippetTO(TranslationOptions):
         "language_choice_text",
         "tariff_choice_text",
         "main_menu_text",
+        "success_payment_text",
         "terms_of_use_text",
         "web_app_btn_text",
         "settings_btn_text",
@@ -26,4 +27,5 @@ class TgBotSnippetTO(TranslationOptions):
         "donate_btn_text",
         "home_btn_text",
         "back_btn_text",
+        "buy_tariff_btn",
     )

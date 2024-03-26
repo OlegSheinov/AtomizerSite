@@ -4,7 +4,7 @@ import graphene
 from django.utils.translation import gettext_lazy as _
 from graphene_django import DjangoObjectType
 
-from home.models import User
+from home.models import User, Tariffs
 from home.utils.formatted_date import format_time
 
 
@@ -24,7 +24,7 @@ class UserNode(DjangoObjectType):
         current_date = datetime.now(timezone.utc)
         date_joined = self.date_joined
         time_with_us = current_date - date_joined
-        text = format_time(time_with_us.seconds)
+        text = format_time(time_with_us.days, time_with_us.seconds)
         return text
 
 
@@ -48,9 +48,30 @@ class CreateUserMutation(graphene.Mutation):
         return CreateUserMutation(create=create)
 
 
+class TariffUserMutation(graphene.Mutation):
+    class Arguments:
+        tg_id = graphene.Int()
+        tariff_id = graphene.Int()
+
+    ok = graphene.Field(graphene.String)
+
+    def mutate(self, info, tg_id, tariff_id):
+        user = User.objects.get(tg_id=tg_id)
+        tariff = Tariffs.objects.get(id=tariff_id)
+        try:
+            user.tariff = tariff
+            user.uses_left += tariff.uses
+            user.save()
+            ok = True
+        except BaseException as err:
+            ok = False
+        return TariffUserMutation(ok=ok)
+
+
 class UserQuery:
     get_user = graphene.Field(UserNode)
     create_user = CreateUserMutation.Field()
+    tariff_user_create = TariffUserMutation.Field()
 
     def resolve_get_user(self, info, **kwargs):
         user = User.objects.user(info)

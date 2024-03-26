@@ -9,7 +9,7 @@ class Tariffs(models.Model):
     name = models.CharField(max_length=64, blank=True, null=True, unique=True, default="Tariff 1",
                             verbose_name=_("Tariff Name"))
     description = RichTextField(blank=True, null=True, verbose_name=_("Tariff description"))
-    price = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, verbose_name=_("Tariff price"))
+    price = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, verbose_name=_("Tariff price"))
     currency = models.IntegerField(
             verbose_name=_("Currency tariff"),
             choices=CurrencyChoices.choices

@@ -24,6 +24,11 @@ class TariffNode(DjangoObjectType):
 
 class TariffQuery:
     get_tariffs = graphene.List(TariffNode)
+    get_tariff_by_id = graphene.Field(TariffNode, tariff_id=graphene.Int())
 
     def resolve_get_tariffs(self, info):
         return Tariffs.objects.filter(end_date__gte=datetime.now()).order_by("id")
+
+
+    def resolve_get_tariff_by_id(self, info, tariff_id):
+        return Tariffs.objects.get(id=tariff_id)

@@ -1,8 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 
 
-def format_time(seconds):
-    days = seconds // (24 * 3600)
+def format_time(days, seconds):
     hours = (seconds % (24 * 3600)) // 3600
 
     hours_form = [_("час"), _("часа"), _("часов")]

@@ -31,6 +31,9 @@ class SettingsNode(DjangoObjectType):
     def resolve_tariff_choice_text(self: TgBotSnippet, info):
         return to_html(richtext(self.tariff_choice_text))
 
+    def resolve_success_payment_text(self: TgBotSnippet, info):
+        return to_html(richtext(self.success_payment_text))
+
 
 class SettingsQuery:
     get_messages = graphene.Field(SettingsNode)
