@@ -1,7 +1,7 @@
 from modeltranslation.decorators import register
 from modeltranslation.translator import TranslationOptions
 
-from home.models import Tariffs, TgBotSnippet
+from home.models import Tariffs, TgBotSnippet, HomePage
 
 
 @register(Tariffs)
@@ -16,6 +16,8 @@ class TariffsTO(TranslationOptions):
 class TgBotSnippetTO(TranslationOptions):
     fields = (
         "welcome_message",
+        "description",
+        "about_bot",
         "language_choice_text",
         "tariff_choice_text",
         "main_menu_text",
@@ -29,3 +31,8 @@ class TgBotSnippetTO(TranslationOptions):
         "back_btn_text",
         "buy_tariff_btn",
     )
+
+
+@register(HomePage)
+class HomePageTO(TranslationOptions):
+    fields = ('header', )

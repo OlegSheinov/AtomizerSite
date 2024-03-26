@@ -13,6 +13,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("api/", include(home_api_urls)),
+    path("", include(wagtail_urls))
 ]
 
 if settings.DEBUG:
@@ -23,7 +24,7 @@ if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += i18n_patterns(
-    path("", include(wagtail_urls)),
-    prefix_default_language=False,
-)
+# urlpatterns += i18n_patterns(
+#     path("", include(wagtail_urls)),
+#     prefix_default_language=False,
+# )

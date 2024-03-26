@@ -1,0 +1,60 @@
+version: "3"
+services:
+  ngrok:
+    image: ngrok/ngrok:latest
+    env_file:
+      - .env
+    ports:
+      - 4040:4040
+  web:
+    build:
+      context: ./
+      dockerfile: ./docker_files/Dockerfile.wagtail.dev
+    command:
+      - /bin/sh
+      - -c
+      - |
+        python manage.py migrate
+        python manage.py sync_page_translation_fields
+        python manage.py update_translation_fields
+        python manage.py runserver 0.0.0.0:8000
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+  postgres:
+    build:
+      context: ./
+      dockerfile: docker_files/Dockerfile.db
+    ports:
+      - '5432:5432'
+    stdin_open: true
+    tty: true
+    restart: always
+    volumes:
+      - global_atomizer_pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    restart: always
+    volumes:
+      - global_atomizer_redis_data:/redis:/data
+    environment:
+      - REDIS_DATABASES=2
+volumes:
+  global_atomizer_pg_data:
+  global_atomizer_redis_data:

@@ -44,6 +44,7 @@ class CreateUserMutation(graphene.Mutation):
             user.save()
             create = True
         except BaseException as err:
+            print(err)
             create = False
         return CreateUserMutation(create=create)
 
