@@ -1,153 +1,106 @@
+/* Устанавливаем box-sizing для всех элементов */
 html {
     box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
+/* Основные стили для body */
 body {
     max-width: 960px;
     min-height: 100vh;
     margin: 0 auto;
     padding: 0 15px;
     color: #231f20;
-    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
-    line-height: 1.25;
+    font-family: 'JetBrains Mono', sans-serif;
+    line-height: 144%;
+    letter-spacing: inherit;
+    font-size: 18px;
 }
 
+/* Стили для контейнера */
+.main_container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Стили для логотипа */
+.logo {
+    display: flex;
+    margin-top: 55px;
+    justify-content: center;
+}
+
+.logo img {
+    width: auto;
+    height: auto;
+}
+
+/* Стили для заголовка */
+.header {
+    max-width: calc(100% - 110px); /* Оставляем место по краям */
+    width: 100%; /* Занимает всю ширину доступного пространства */
+    /*padding: 55px; !* Отступы по краям *!*/
+    box-sizing: border-box;
+    background: linear-gradient(to right, rgba(0, 191, 212, 1), rgba(0, 96, 154, 1)); /* Линейный градиент от красного к синему */
+    -webkit-background-clip: text; /* Необходимо для WebKit браузеров */
+    color: transparent; /* Прозрачный цвет текста */
+    margin-top: calc(100% - 76px)
+}
+
+.file-input {
+    font: 600 14px/18px sans-serif;
+    width: 100%;
+    height: 48px;
+    border-radius: 0;
+    background: no-repeat right center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 15px 20px;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 10000;
+    color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+}
+
+.canvas-item {
+    align-self: center;
+    margin-top: 20px;
+}
+
+/* Стили для ссылок */
 a {
-    background-color: transparent;
     color: #308282;
     text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
 a:hover {
     color: #ea1b10;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-ul {
-    padding: 0;
+/* Обнуляем отступы для заголовков и абзацев */
+h1, h2, h3, h4, h5, p {
     margin: 0;
-    font-weight: 400;
 }
 
+/* Скрываем overflow для SVG */
 svg:not(:root) {
     overflow: hidden;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.logo {
-    width: 150px;
-    margin-inline-end: 20px;
-}
-
-.logo a {
-    display: block;
-}
-
-.figure-logo {
-    max-width: 150px;
-    max-height: 55.1px;
-}
-
-.release-notes {
-    font-size: 14px;
-}
-
-.main {
-    padding: 40px 0;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.figure-space {
-    max-width: 265px;
-}
-
-@keyframes pos {
-    0%, 100% {
-        transform: rotate(-6deg);
-    }
-    50% {
-        transform: rotate(6deg);
-    }
-}
-
-.egg {
-    fill: #43b1b0;
-    animation: pos 3s ease infinite;
-    transform: translateY(50px);
-    transform-origin: 50% 80%;
-}
-
-.main-text {
-    max-width: 400px;
-    margin: 5px auto;
-}
-
-.main-text h1 {
-    font-size: 22px;
-}
-
-.main-text p {
-    margin: 15px auto 0;
-}
-
-.footer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-top: 1px solid #e6e6e6;
-    padding: 10px;
-}
-
-.option {
-    display: block;
-    padding: 10px 10px 10px 34px;
-    position: relative;
-    text-decoration: none;
-}
-
-.option svg {
-    width: 24px;
-    height: 24px;
-    fill: gray;
-    border: 1px solid #d9d9d9;
-    padding: 5px;
-    border-radius: 100%;
-    top: 10px;
-    inset-inline-start: 0;
-    position: absolute;
-}
-
-.option h2 {
-    font-size: 19px;
-    text-decoration: underline;
-}
-
-.option p {
-    padding-top: 3px;
-    color: #231f20;
-    font-size: 15px;
-    font-weight: 300;
-}
+/* Медиа запросы */
 
 @media (max-width: 996px) {
     body {
@@ -171,13 +124,16 @@ svg:not(:root) {
     }
 
     .footer {
-        display: block;
         width: 300px;
         margin: 0 auto;
     }
 }
 
 @media (max-width: 360px) {
+    body {
+        max-width: 360px;
+    }
+
     .header-link {
         max-width: 100px;
     }

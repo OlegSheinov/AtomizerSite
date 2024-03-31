@@ -9,9 +9,17 @@ class HomePage(Page):
     max_count = 1
 
     header = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Test"))
+    logo = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        verbose_name=_("Logo in site")
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('header')
+        FieldPanel('logo'),
+        FieldPanel('header'),
     ]
 
     subpage_types = [
